@@ -1,0 +1,17 @@
+debug: false
+
+server:
+  port: ${PORT:8180}
+
+management:
+  # show all actuator endpoints (only for POC)
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+
+spring:
+  application:
+    name: greetings-client
+

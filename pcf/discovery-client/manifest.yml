@@ -1,0 +1,9 @@
+---
+applications:
+- name: discovery-client-677101
+  memory: 1G
+  instances: 1
+  path: target/discovery-client-0.0.1-SNAPSHOT.jar
+  services:
+#  - config-server
+  - service-registry

@@ -1,0 +1,25 @@
+config:
+  name: GreetingsClient
+  info: Client micro serive auto discovered by eureka
+
+endpoints:
+  restart:
+    enabled: true
+
+spring:
+  application:
+    name: greetings-client
+  cloud:
+    config:
+      enabled: true
+
+eureka:
+  client:
+    region: default
+    registryFetchIntervalSeconds: 5
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost}
+    nonSecurePort: 80
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+    leaseRenewalIntervalInSeconds: 5

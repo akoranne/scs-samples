@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+config:
+  name: ConfigClient2
+  info: Cloud Config Client Samples
+
+endpoints:
+  restart:
+    enabled: true
+
+# need this to see the acutator endpoints
+management:
+  security:
+    enabled: false

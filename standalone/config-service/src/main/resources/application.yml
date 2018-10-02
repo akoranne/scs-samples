@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: standalone-config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/akoranne/configs-repo.git
+server:
+  port: 8888

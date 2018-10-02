@@ -1,0 +1,9 @@
+---
+applications:
+- name: greetings-client
+  memory: 1024M
+  instances: 1
+  path: target/greetings-client-0.0.1-SNAPSHOT.jar
+  services:
+  - config-server
+  - service-registry

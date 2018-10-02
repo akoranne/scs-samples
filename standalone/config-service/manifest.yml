@@ -1,0 +1,8 @@
+---
+applications:
+- name: config-service
+  memory: 512M
+  instances: 1
+  path: target/configuration-service-0.0.1-SNAPSHOT.jar
+  env:
+    git.uri: https://github.com/akoranne/configs.git

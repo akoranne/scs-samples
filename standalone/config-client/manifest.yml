@@ -1,0 +1,10 @@
+---
+applications:
+- name: config-client
+  memory: 1G
+  instances: 1
+  path: target/configuration-client-0.0.1-SNAPSHOT.jar
+  env:
+    endpoint: endpoint.apps.pcfdev.com:8080
+    sid: testdb
+    # jdbc:oracle:thin:[<user>/<password>]@<host>[:<port>]:<SID>

@@ -1,0 +1,24 @@
+debug: false
+
+server:
+  port: ${PORT:8761}
+
+management:
+  # show all actuator endpoints (only for POC)
+  endpoints:
+    enabled-by-default: true
+    info:
+      enabled: true
+    web:
+      exposure:
+        include: '*'
+
+spring:
+#    # secure this registry with basic security (user/pass)
+#    # - requires enabling basic security
+#    user:
+#      name: kermit
+#      password: Muppets2018
+#      roles: USER,ADMIN
+  application:
+    name: service-registry
