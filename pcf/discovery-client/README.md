@@ -50,11 +50,11 @@ service binding.
 
 	To verify go to `http://localhost:8761`
 	
-	You should see the `discovery-client` instance on the Eureka registry page
+	You should see the `DISCOVERY-CLIENT` instance on the Eureka registry page
 
 5. To verify the client side service lookup, goto
 
-	http://localhost:8080/greetings/foo
+	http://localhost:8080/message
 
 
 
@@ -114,5 +114,5 @@ service binding.
 
 4. To verify the client side service lookup, goto
    
-   	http://discovery-client.apps.<pcf-domain>/greetings/foo
+   	http://discovery-client.apps.<pcf-domain>/message
    
