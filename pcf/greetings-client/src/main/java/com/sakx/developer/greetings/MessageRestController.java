@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
 import java.util.Map;
@@ -46,7 +47,6 @@ public class MessageRestController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
-
 
 	@RequestMapping("/")
 	public String whoAmI() {
@@ -84,8 +84,10 @@ public class MessageRestController {
     @RequestMapping("/discover")
     public Map<String, String> discover() {
 	    StringBuilder buf = new StringBuilder();
+        RestTemplate restTemplate = new RestTemplate();
         discoveryClient.getInstances("discovery-client").forEach((ServiceInstance s) -> {
-            buf.append(ToStringBuilder.reflectionToString(s));
+            buf.append(restTemplate.getForObject(s.getUri()+"/message", String.class));
+            // buf.append(ToStringBuilder.reflectionToString(s));
         });
         return Collections.singletonMap("greeting", buf.toString());
     }
