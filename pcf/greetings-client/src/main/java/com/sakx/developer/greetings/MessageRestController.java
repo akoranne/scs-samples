@@ -1,8 +1,12 @@
 package com.sakx.developer.greetings;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -40,6 +44,10 @@ public class MessageRestController {
 	@Value("${config.name:unknown}")
 	private String name;
 
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+
 	@RequestMapping("/")
 	public String whoAmI() {
 		return (" Hello " + name);
@@ -71,4 +79,16 @@ public class MessageRestController {
 		String resolvedName =  cn.orElse(name);
 		return Collections.singletonMap("greeting", "Hello, " + resolvedName + "!");
 	}
+
+
+    @RequestMapping("/discover")
+    public Map<String, String> discover() {
+	    StringBuilder buf = new StringBuilder();
+        discoveryClient.getInstances("discovery-client").forEach((ServiceInstance s) -> {
+            buf.append(ToStringBuilder.reflectionToString(s));
+        });
+        return Collections.singletonMap("greeting", buf.toString());
+    }
+
+
 }

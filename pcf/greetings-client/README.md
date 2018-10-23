@@ -36,9 +36,9 @@ service binding.
 
 3. To verify the greetings client goto
 
-	http://localhost:8080
+	http://localhost:8180
 	
-	http://localhost:8080/hi/foo
+	http://localhost:8180/hi/foo
 
 4. Verify the greetings client is registered with the service registry goto
 
