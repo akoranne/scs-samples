@@ -4,13 +4,16 @@ server:
   port: 8080
 
 management:
-  security:
-    enabled: false
-
-security:
-  basic:
-    enabled: false
+  # show all actuator endpoints (only for POC)
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
 
 spring:
   application:
     name: discovery-client
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration
+

@@ -85,10 +85,13 @@ public class MessageRestController {
     public Map<String, String> discover() {
 	    StringBuilder buf = new StringBuilder();
         RestTemplate restTemplate = new RestTemplate();
-        discoveryClient.getInstances("discovery-client").forEach((ServiceInstance s) -> {
-            buf.append(restTemplate.getForObject(s.getUri()+"/message", String.class));
-            // buf.append(ToStringBuilder.reflectionToString(s));
+        discoveryClient.getInstances("DISCOVERY-CLIENT").forEach((ServiceInstance s) -> {
+            log.info(ToStringBuilder.reflectionToString(s));
+            log.info("-----> {}, {}, {}, {}", s.getUri(), s.getHost(), s.getPort(), s.getServiceId());
+            // buf.append(restTemplate.getForObject(s.getUri()+"/message", String.class));
         });
+
+        buf.append(restTemplate.getForObject("http://discovery-client/message", String.class));
         return Collections.singletonMap("greeting", buf.toString());
     }
 
