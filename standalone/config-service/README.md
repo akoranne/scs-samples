@@ -34,10 +34,10 @@ This example relies on following config repo `https://github.com/akoranne/config
 2. Test locally
 	```
 	Go to
-		http://config-service.apps.<pcf-domain>/a-bootiful-client/default
+		http://config-service-ask.apps.<pcf-domain>/a-bootiful-client/default
 
 	For example
-		http://config-service.apps.local.pcfdev.io/a-bootiful-client/default
+		http://config-service-ask.apps.local.pcfdev.io/a-bootiful-client/default
 
 	You should see the jason document.
 	```
