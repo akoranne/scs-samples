@@ -16,8 +16,7 @@ binding to the app instance.
 	$ cd <spring runtime folder>
 	$ spring cloud --list
 	  spring cloud eureka configserver h2 kafka stubrunner zipkin
-	
-	# --- start the configserver 
+	# --- start the configserver
 	$ spring cloud configserver
 	```
 	
@@ -49,24 +48,25 @@ binding to the app instance.
 
 
 ## Create Service Instance
-1. login to pcf
-	```
-	$> cf login --skip-ssl-validation -a https://api.local2.pcfdev.io -o pcfdev-org -s pcfdev-space
-	API endpoint: https://api.local.pcfdev.io
-	
-	Email> user
-	
-	Password>
-	Authenticating...
-	OK
-	```
-2. create service instance of the config-server
-	```
-	$> cf create-service p-config-server trial config-server -c '{"git": { "uri": "https://github.com/akoranne/config-repo", "label": "develop" } }'	
+0. login to pcf
 
-	$ cf create-service p-config-server trial config-server -c '{"git": { "uri": "https://github.com/akoranne/config-repo"} }'
-	$> cf service config-server
-	```
+    ```
+        $> cf login --skip-ssl-validation -a https://api.local2.pcfdev.io -o pcfdev-org -s pcfdev-space
+        API endpoint: https://api.local.pcfdev.io
+        Email> user
+        Password>
+        Authenticating...
+        OK
+    ```
+
+0. create service instance of the config-server
+
+    ```
+        $> cf create-service p-config-server trial config-server -c '{"git": { "uri": "https://github.com/akoranne/config-repo"} }'
+        or to use a specific label/branch
+        $> cf create-service p-config-server trial config-server -c '{"git": { "uri": "https://github.com/akoranne/config-repo", "label": "develop" } }'
+        $> cf service config-server
+    ```
 
 ## Local Build & Test
 1. Build the project
@@ -83,7 +83,7 @@ binding to the app instance.
 2. Test locally
 	```
 	Go to
-		http://config-service.apps.<pcf-domain>/a-bootiful-client/default
+		http://config-service.apps.<pcf-domain>/message
 	
 	For example
 		http://config-client.apps.local.pcfdev.io/message
@@ -93,9 +93,16 @@ binding to the app instance.
 
 ## Results
 ```
-Message: Hello default [dburl: jdbc:oracle:thin:vcap/unknown@endpoint.apps.cfapps.io:8080:testdb]
+{
+    "configUri": "https://config-381c5166-1939-4bf0-91ca-9839fbbd90a7.cfapps.io",
+    "dburl": "jdbc:oracle:thin:joe@acme.com/abc123@host:port:sid",
+    "message": "Hello World (config yml)",
+    "timestamp": "2019-01-08T21:44:28.804",
+    "version": "1.0"
+}
 ```
 
 
 ## References
-* [ENCRYPTING AND DECRYPTING CONFIGURATION PROPERTY VALUES IN SPRING CLOUD](https://patrickgrimard.io/2016/03/04/encrypting-and-decrypting-configuration-property-values-in-spring-cloud/)
+* https://patrickgrimard.io/2016/03/04/encrypting-and-decrypting-configuration-property-values-in-spring-cloud/[ENCRYPTING AND DECRYPTING CONFIGURATION PROPERTY VALUES IN SPRING CLOUD]
+

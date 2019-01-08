@@ -1,15 +1,49 @@
-server:
-  port: 8080
-
 config:
-  name: ConfigClient2
-  info: Cloud Config Client Samples
+  name: config-client
+  info: spring boot application config client
 
-endpoints:
-  restart:
-    enabled: true
+spring:
+  cloud:
+    config:
+      enabled: true
+  output:
+    ansi:
+      enabled: ALWAYS
 
-# need this to see the acutator endpoints
-management:
-  security:
-    enabled: false
+---
+spring:
+  profiles: default
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://localhost:8888
+          force-pull: true
+          # username:
+          # password:
+          # privateKey:
+
+---
+spring:
+  profiles: cloud
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${vcap.services.config-server.credentials.uri:https://localhost:8888}
+          force-pull: true
+          # username:
+          # password:
+          # privateKey:
+
+# -- samples
+#  cloud:
+#    config:
+#      uri: ${vcap.services.config-server.credentials.uri:http://localhost:8888}
+#
+#  eureka:
+#    client:
+#      serviceUrl:
+#        defaultZone: ${vcap.services.service-registry.credentials.uri:http://127.0.0.1:8761}/eureka
+#        defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/
+#      # authorization: ${security.oauth2.client}
