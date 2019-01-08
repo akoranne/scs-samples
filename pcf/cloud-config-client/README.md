@@ -19,14 +19,13 @@ binding to the app instance.
 	# --- start the configserver
 	$ spring cloud configserver
 	```
-	
+		
 	The config server will use `./configserver.yml`. 
 	The git uri is configured in the config file. 
 	
 	The config server will run on port 8888.
 	
 	To verify go to `http://localhost:8888/ConfigClient2/default` 
-
 
 2. Run the config client
 	
@@ -63,8 +62,11 @@ binding to the app instance.
 
     ```
         $> cf create-service p-config-server trial config-server -c '{"git": { "uri": "https://github.com/akoranne/config-repo"} }'
+        
         or to use a specific label/branch
+        
         $> cf create-service p-config-server trial config-server -c '{"git": { "uri": "https://github.com/akoranne/config-repo", "label": "develop" } }'
+        
         $> cf service config-server
     ```
 
@@ -88,7 +90,7 @@ binding to the app instance.
 	For example
 		http://config-client.apps.local.pcfdev.io/message
 	 
-	You should see the jason document.
+	You should see the results.
 	```
 
 ## Results
@@ -104,5 +106,5 @@ binding to the app instance.
 
 
 ## References
-* https://patrickgrimard.io/2016/03/04/encrypting-and-decrypting-configuration-property-values-in-spring-cloud/[ENCRYPTING AND DECRYPTING CONFIGURATION PROPERTY VALUES IN SPRING CLOUD]
+* [ENCRYPTING AND DECRYPTING CONFIGURATION PROPERTY VALUES IN SPRING CLOUD](https://patrickgrimard.io/2016/03/04/encrypting-and-decrypting-configuration-property-values-in-spring-cloud/)
 

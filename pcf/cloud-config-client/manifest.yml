@@ -1,6 +1,6 @@
 ---
 applications:
-- name: config-client-677101
+- name: config-client
   path: target/cloud-config-client-0.0.1-SNAPSHOT.jar
   memory: 1G
   instances: 1
