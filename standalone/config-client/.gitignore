@@ -49,17 +49,6 @@ local.properties
 ######################
 /log/**
 /target/**
-*/target/**
-/config-service/target
-/config-client/target
-/cloud-config-client/target
-/scs-config-jpa-client/target
-/discovery-client/target
-
-######################
-# Gradle
-######################
-.gradle/**
 
 ######################
 # Package Files
@@ -113,15 +102,17 @@ Desktop.ini
 .merge_file*
 
 ######################
-# Gradle Wrapper
+# Gradle
 ######################
 !gradle/wrapper/gradle-wrapper.jar
+.gradle/
+.gradle/**
+out
 
 ######################
 # Maven Wrapper
 ######################
 !.mvn/wrapper/maven-wrapper.jar
-.gradle/
 .idea/
 build/
 ci/assets/
