@@ -17,6 +17,10 @@ service binding.
 	  spring cloud eureka configserver h2 kafka stubrunner zipkin
 
 	# --- start the configserver
+	$ spring cloud configserver
+
+
+	# --- start the eurekaserver
 	$ spring cloud eureka
 	```
 

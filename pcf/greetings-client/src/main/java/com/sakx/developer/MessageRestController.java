@@ -1,4 +1,4 @@
-package com.sakx.developer.greetings;
+package com.sakx.developer;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.slf4j.Logger;

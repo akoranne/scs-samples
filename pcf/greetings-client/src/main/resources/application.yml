@@ -12,6 +12,9 @@ spring:
   cloud:
     config:
       enabled: true
+  output:
+    ansi:
+      enabled: ALWAYS
 
 #eureka:
 #  client:
