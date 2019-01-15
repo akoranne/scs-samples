@@ -44,8 +44,6 @@ service binding.
 
 	http://localhost:8080
 	
-	http://localhost:8080/greetings/foo
-
 4. Verify the discovery client is registered with the service registry goto
 
 	To verify go to `http://localhost:8761`

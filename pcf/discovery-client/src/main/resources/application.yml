@@ -1,6 +1,6 @@
 config:
   name: discovery-client
-  info: Client micro serive auto discovered by eureka
+  info: spring boot micro serive auto discovered by eureka
 
 endpoints:
   restart:
@@ -12,6 +12,9 @@ spring:
   cloud:
     config:
       enabled: true
+  output:
+    ansi:
+      enabled: ALWAYS
 
 eureka:
   client:
@@ -23,6 +26,13 @@ eureka:
     metadataMap:
       instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
     leaseRenewalIntervalInSeconds: 5
+
+logging:
+  level:
+    root: WARN
+    com:
+      sakx: DEBUG
+
 
 ---
 spring:

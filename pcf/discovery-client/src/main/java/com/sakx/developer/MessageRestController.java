@@ -1,4 +1,4 @@
-package com.sakx.developer.discovery;
+package com.sakx.developer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +43,6 @@ public class MessageRestController {
 
 	@RequestMapping("/message")
 	public String getMessage() {
-		log.info(" in getMessage() " + this.user + ", " + this.password);
 		StringBuilder buf = new StringBuilder();
 		buf.append("jdbc:oracle:thin:")
 				.append(user)
@@ -57,6 +56,7 @@ public class MessageRestController {
 		StringBuilder msg = new StringBuilder();
 		msg.append(" Message: ").append(this.message);
 		msg.append(" [dburl: ").append(buf).append("]");
+		log.debug(" msg - {} ", msg);
 		return msg.toString();
 	}
 }

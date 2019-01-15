@@ -1,4 +1,4 @@
-package com.sakx.developer.discovery;
+package com.sakx.developer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
